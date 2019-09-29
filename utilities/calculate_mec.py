@@ -39,8 +39,8 @@ def read_frag(frag_file):
 
     
 
-def calculate_mec(hapblock_file,frags):
-
+def calculate_mec(hapblock_file,frags): # based on compute_MEC function from https://github.com/vibansal/HapCUT2/blob/c2e66089bc8bb789e00db0b43f97bdf08e97c229/reproduce_hapcut2_paper/error_rates.py
+	
     MEC_all=[]
     block_num=len(hap_dic)
     for block_num in range(1,block_num+1):                               
