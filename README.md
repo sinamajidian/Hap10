@@ -2,103 +2,86 @@ Hap10
 ======
 
 
-# Table of Contents
-
-1. [My first title](#my-first-title)
-2. [My second title](#my-second-title)
-## My first title
-Some text.
-## My second title
 
 
+The goal is to estimate haplotypes from 10x read data.
 
-## To build:
+
+## Step 0. Preparation procedure 
+
+Consider that you have a reference genome (ref/ref.fa) and two fastq files (reads/R1.fastq.gz and reads/R2.fastq.gz corresponding to Illumina paired-end read). As mentioned in the paper you need to align them to the reference genome using [Longrander]((https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation)). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
 
 ```
+k=3  # ploidy level
 
+longranger mkref ref/ref.fasta
+longranger align --id=out_longranger/ --fastqs=reads/ --reference=refdata-ref/
+
+freebayes -f ref/ref.fasta -p $k out_longranger/outs/possorted_bam.bam  > var.vcf
+```
+
+
+## Step 1. Extracting haplotype information
+
+Here, a fragment file (as a text file) is generated using BAM and filtered VCF file. Firstly, you need to build extract_poly, an edited version (under test) of [extracthairs](https://github.com/vibansal/HapCUT2) in which polyploid genomes are also allowed. The makefile will attempt to build samtools and htslib as git submodules. The output of this step is a binary file `extractHAIRS` in folder `build`. 
+
+```
 git clone https://github.com/smajidian/extract_poly
 cd extract_poly
 make 
 ```
 
-The makefile will attempt to build samtools and htslib as git submodules. The output of this step is a binary file `extractHAIRS` in folder `build`.
+The input of this step is two files: 
 
-
-
-
-
-## Input:
-It requires the following input:
 - BAM file for an individual containing reads aligned to a reference genome
-- VCF file containing only heterzygous SNVs . Complex SNVs and indels should be handled beforehand. 
+- VCF file containing only heterzygous SNVs. Complex SNVs and indels are not allowed for this version. The VCF file should only contain genotyped SNPs.
 
-
-
-
-## Run for Illumina dataset:
-
-
-(1) Filtering VCF file (removing homozygous and non-SNP variants) for tetraploid
 
 ```
-cd test_data
-cat vars.vcf | grep -v "1/1/1/1" | grep -v "0/0/0/0" | grep -v "mnp" > vars_filtered.vcf
+utilities/break_vcf.sh  var.vcf var_break.vcf
+cat var_break.vcf  | grep -v "1/1/1" | grep -v "0/0/0" grep -v "/2" > var_het.vcf   #This is for triploid. 
+
+./extract_poly/build/extractHAIRS --10X 1 --bam out_longranger/outs/possorted_bam.bam --VCF var_het.vcf --out unlinked_fragment_file
 ```
 
-
-
-(2) Using extractHAIRS to convert BAM file to the compact fragment file format containing only haplotype-relevant information. 
-
-```
-../build/extractHAIRS  --bam reads_sorted.bam --VCF vars_filtered.vcf --out fragment_file
-```
-
-
-(3) If you need to use the fragment file for sdhap or althap, use
-
-```
-python2 ../FragmentPoly.py -f fragment_file  -o fragment_file_sdhap -x SDhaP 
-```
-
-
-for Haptree v0.1:
-```
-python2 ../FragmentPoly.py -f fragment_file  -o fragment_file_haptree -x HapTree 
-```
-Note that haptree v1 is only for diploid.
-
-
-
-## Run for 10x dataset:
-
-(1) Filtering VCF file
-
-```
-cat variants.vcf | grep -v "0/0/0" | grep -v "1/1/1/1" | grep -v "0/0/0/0" | grep -v "mnp" > variants_filtered.vcf
-```
-
-
-(2) use extractHAIRS to convert BAM file to the compact fragment file format containing only haplotype-relevant information. 
-
-```
-./build/extractHAIRS --10X 1 --bam reads_sorted.bam --VCF variants_filtered.vcf --out unlinked_fragment_file
-```
-
-(3) Link fragments into barcode-specific fragment:
+Here, each line corresponds to one read. Then we link those read with the same barcode and generate barcode-specific fragment file.
 ```
 python3 utilities/LinkFragments_brcd_based.py  unlinked_fragment_file linked_fragment_file
 ```
 
-For sdhap, althap and haptree, see step (3) of illumina dataset.
 
 
 
-NOTE: It is required that the BAM reads have the BX (corrected barcode) tag.
+## Step 2.  Extracting molecule-specific fragments
+
+
+```
+mean_10x_molecule_length=50      # kilobase
+python3 utilities/split.py frag.txt $mean_10x_molecule_length frag_sp.txt 
+```
+
+
+## Step 3.  Extracting molecule-specific fragments
+
+```
+python3 utilities/extract_scc.py frag_sp.txt scc ./out
+```
+If you want to have larger haplotype block you can use `cc` instead of `scc`.
 
 
 
 
-This is an edited version (under test) of [extracthairs](https://github.com/vibansal/HapCUT2) in which polyploid genomes are also allowed. The goal of this code is to generate fragment file needed for haplotyping algorithm like [hapcut](https://github.com/vibansal/hapcut2), [sdhap](https://sourceforge.net/projects/sdhap/), [althap](https://github.com/realabolfazl/AltHap), [Haptree v0.1](http://cb.csail.mit.edu/cb/haptree/), [HapMc](https://github.com/smajidian/HapMC), and [ H-popG](https://github.com/MinzhuXie/H-PoPG).
+## Step 4.  Haplotyping 
+
+-Fast mode: You need to install [sdhap](https://sourceforge.net/projects/sdhap/).
+
+-Accurate mode: You may refer to [this folder](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
+
+
+
+
+
+
 
 
 
@@ -109,9 +92,8 @@ This is an edited version (under test) of [extracthairs](https://github.com/viba
 
 [Haplosim](https://github.com/EhsanMotazedi/Haplosim)
 
-[HapMc](https://github.com/smajidian/HapMC)
-
 [Hap10] My paper under preparation.
+
 
 
 
