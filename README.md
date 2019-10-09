@@ -1,8 +1,14 @@
 Hap10 
 ======
 
-## About:
-This is an edited version (under test) of [extracthairs](https://github.com/vibansal/HapCUT2) in which polyploid genomes are also allowed. The goal of this code is to generate fragment file needed for haplotyping algorithm like [hapcut](https://github.com/vibansal/hapcut2), [sdhap](https://sourceforge.net/projects/sdhap/), [althap](https://github.com/realabolfazl/AltHap), [Haptree v0.1](http://cb.csail.mit.edu/cb/haptree/), [HapMc](https://github.com/smajidian/HapMC), and [ H-popG](https://github.com/MinzhuXie/H-PoPG).
+
+# Table of Contents
+
+1. [My first title](#my-first-title)
+2. [My second title](#my-second-title)
+## My first title
+Some text.
+## My second title
 
 
 
@@ -90,6 +96,9 @@ For sdhap, althap and haptree, see step (3) of illumina dataset.
 NOTE: It is required that the BAM reads have the BX (corrected barcode) tag.
 
 
+
+
+This is an edited version (under test) of [extracthairs](https://github.com/vibansal/HapCUT2) in which polyploid genomes are also allowed. The goal of this code is to generate fragment file needed for haplotyping algorithm like [hapcut](https://github.com/vibansal/hapcut2), [sdhap](https://sourceforge.net/projects/sdhap/), [althap](https://github.com/realabolfazl/AltHap), [Haptree v0.1](http://cb.csail.mit.edu/cb/haptree/), [HapMc](https://github.com/smajidian/HapMC), and [ H-popG](https://github.com/MinzhuXie/H-PoPG).
 
 
 
