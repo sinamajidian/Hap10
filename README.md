@@ -4,8 +4,7 @@ Hap10
 
 
 
-The goal is to estimate haplotypes from 10x read data.
-
+The goal is to reconstruct accurate and long haplotype from polyploid genome using linked reads (10x genomics reads).
 
 ## Step 0. Preparation procedure 
 
