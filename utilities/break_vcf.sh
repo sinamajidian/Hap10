@@ -2,6 +2,11 @@
 # EX: ./break_vcf.sh my.vcf out.vcf
 # Written by Ehsan Motazedi, Wageningen UR, 17-10-2017
 # Last Modified: 27-07-2018
+
+
+
+# credit https://github.com/EhsanMotazedi/TriPoly/blob/master/break_vcf.sh
+
 file=$1
 outfile=$2
 tmpfile=$(mktemp /tmp/dummy.XXXXXX)

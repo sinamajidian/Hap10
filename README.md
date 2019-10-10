@@ -15,6 +15,7 @@ Consider that you have a reference genome (ref/ref.fa) and two fastq files (read
 k=3  # ploidy level
 
 longranger mkref ref/ref.fasta
+
 longranger align --id=out_longranger/ --fastqs=reads/ --reference=refdata-ref/
 
 freebayes -f ref/ref.fasta -p $k out_longranger/outs/possorted_bam.bam  > var.vcf
@@ -39,6 +40,7 @@ The input of this step is two files:
 
 ```
 utilities/break_vcf.sh  var.vcf var_break.vcf
+
 cat var_break.vcf  | grep -v "1/1/1" | grep -v "0/0/0" grep -v "/2" > var_het.vcf   #This is for triploid. 
 
 ./extract_poly/build/extractHAIRS --10X 1 --bam out_longranger/outs/possorted_bam.bam --VCF var_het.vcf --out unlinked_fragment_file
@@ -46,7 +48,9 @@ cat var_break.vcf  | grep -v "1/1/1" | grep -v "0/0/0" grep -v "/2" > var_het.vc
 
 Here, each line corresponds to one read. Then we link those read with the same barcode and generate barcode-specific fragment file.
 ```
-python3 utilities/LinkFragments_brcd_based.py  unlinked_fragment_file linked_fragment_file
+grep -v "NULL"  unlinked_fragment_file > unlinked_fragment_file_filtered  # removing those reads without barcode
+
+python3 utilities/LinkFragments_brcd_based.py  unlinked_fragment_file_filtered frag.txt
 ```
 
 
@@ -57,16 +61,17 @@ python3 utilities/LinkFragments_brcd_based.py  unlinked_fragment_file linked_fra
 
 ```
 mean_10x_molecule_length=50      # kilobase
-python3 utilities/split.py frag.txt $mean_10x_molecule_length frag_sp.txt 
+
+python3 utilities/splitter.py frag.txt $mean_10x_molecule_length frag_sp.txt 
 ```
 
 
-## Step 3.  Extracting molecule-specific fragments
+## Step 3.  Extracting strongly connected components of fragments
 
 ```
 python3 utilities/extract_scc.py frag_sp.txt scc ./out
 ```
-If you want to have larger haplotype block you can use `cc` instead of `scc`.
+If you want to have larger haplotype block you can use `cc` instead of `scc`. There are some parameters in the code, you can change them based on your preference.
 
 
 
@@ -74,6 +79,12 @@ If you want to have larger haplotype block you can use `cc` instead of `scc`.
 ## Step 4.  Haplotyping 
 
 -Fast mode: You need to install [sdhap](https://sourceforge.net/projects/sdhap/).
+
+```
+python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP  &&
+
+./sdhap/hap_poly frag_sd.txt  out.hap $k 
+```
 
 -Accurate mode: You may refer to [this folder](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
 

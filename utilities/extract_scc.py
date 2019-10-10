@@ -11,6 +11,8 @@ from scipy import linalg
 
 
 
+# step 2 of hap10 paper
+
 
 def parse_fragment_file(fragment_file_name):
 
