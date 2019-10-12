@@ -1,8 +1,10 @@
 
 
 
-# How to use hap10 without paying for MATLAB
+# How to use hap10 as accurate mode
  
+
+This package is written in MATLAB. The input of the package is fragment file which can be generated using Step 2 (in root folder of this page).  You can run the package using m-code if you have a licensed MATLAB. The other option is to use compiled code without paying for MATLAB:
 
 ## Installation on LINUX
 1. Download the MATLAB Runtime R2019a (9.6) for free from [here](http://ssd.mathworks.com/supportfiles/downloads/R2019a/Release/3/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019a_Update_3_glnxa64.zip)

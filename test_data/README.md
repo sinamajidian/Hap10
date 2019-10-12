@@ -3,7 +3,7 @@
 ## A simple instruction for testing fast mode.
 
 
-You can test the pipeline using the provided data in this folder. We suppose that you have a BAM and VCF file. Also, you've built the extract_poly and SDhaP package .
+You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package. You may find a SDhaP binary for Ubuntu in the utilities folder (under construction).  
 
 
 
@@ -29,7 +29,7 @@ python3 ../utilities/extract_scc.py frag_sp.txt scc ./frag_scc
 for i in {0..2}; do
 
 	python2 ../utilities/FragmentPoly.py -f frag_scc0_${i}.txt  -o frag_scc0_${i}_sd.txt -x SDhaP  
-	hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
+	../utilities/hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
 	cat scc0_${i}.hap >> haplotype.hap
 	
 done

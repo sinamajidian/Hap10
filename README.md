@@ -77,7 +77,9 @@ If you want to have larger haplotype block you can use `cc` instead of `scc`. Th
 
 ## Step 4.  Haplotyping 
 
--Fast mode: You need to install [sdhap](https://sourceforge.net/projects/sdhap/).
+-Fast mode (Hap++):
+
+ You need to install [sdhap](https://sourceforge.net/projects/sdhap/) using this [instruction](https://github.com/smajidian/sdhapc).
 
 ```
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP  &&
@@ -85,7 +87,9 @@ python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP  &&
 ./sdhap/hap_poly frag_sd.txt  out.hap $k 
 ```
 
--Accurate mode: You may refer to [this folder](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
+-Accurate mode (Hap10): 
+
+You may refer to [this folder](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
 
 
 
