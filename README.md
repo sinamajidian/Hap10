@@ -82,10 +82,23 @@ If you want to have larger haplotype block you can use `cc` instead of `scc`. Th
  You need to install [sdhap](https://sourceforge.net/projects/sdhap/) using this [instruction](https://github.com/smajidian/sdhapc).
 
 ```
+# triploid
+
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP  &&
 
-./sdhap/hap_poly frag_sd.txt  out.hap $k 
+./sdhap/hap_poly frag_sd.txt  out.hap 3
+
+python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position.hap -v var_het.vcf  
 ```
+
+
+
+Since, we know that all variants are hetro, we may remove homo variants in estimated haplotype.
+
+```
+cat out_with_genomic_position.hap | grep -v "0\t0\t0" |grep -v "1\t1\t1" > out_filtered.hap
+```
+
 
 -Accurate mode (Hap10): 
 

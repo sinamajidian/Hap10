@@ -47,7 +47,7 @@ def parse_fragment_file(fragment_file_name):
                             start_varids = int(list_start_varids[i])
                             alleles_segment = list_alleles_segments[i]
                             list_varids_infragment += list(range(start_varids,start_varids+len(alleles_segment)))
-
+?
                         list_varids_infragments.append(list_varids_infragment)
                     else:
                         print('Error in format of input fragment file ')

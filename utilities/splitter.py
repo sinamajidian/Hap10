@@ -244,6 +244,9 @@ if __name__ == "__main__":
     filename_out= filename_fragment[:-4]+'_sp.txt'
     out_file=open(filename_out, "w")
 
+
+
+:
     for barcode, fragment in dic_frg.items():
         [list_segments, qualities]=fragment
         
