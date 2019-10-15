@@ -1,0 +1,18 @@
+Number of fragments in the txt file is 4607
+The input file contains 1 connected component(s).
+*** Working on connected component index 0***
+Calculating weight matrix of 4607 fragments.
+Currently on bipartition graph with the size of 4607
+Ncut value between first (l=2057) and second part (l=2550) is 0.000437, therefore, Cut is needed.
+Currently on bipartition graph with the size of 2057
+Ncut value between first (l=1067) and second part (l=990) is 0.001226, therefore, Cut is needed.
+Currently on bipartition graph with the size of 2550
+Ncut value between first (l=1216) and second part (l=1334) is 0.056566, therefore, Cut is not needed.
+Currently on bipartition graph with the size of 1067
+Ncut value between first (l=492) and second part (l=575) is 0.135171, therefore, Cut is not needed.
+Currently on bipartition graph with the size of 990
+Ncut value between first (l=527) and second part (l=463) is 0.135653, therefore, Cut is not needed.
+The connected component with index 0, contains 3 strongly connected component(s).
+Number of fragments in part with id 0 is 2550
+Number of fragments in part with id 1 is 1067
+Number of fragments in part with id 2 is 990
