@@ -9,10 +9,14 @@ The goal is to reconstruct accurate and long haplotype from polyploid genome usi
 
 # Workflow of Hap10
 
-Step 0. Preparation procedure\\
-Step 1. Extracting haplotype information\\
-Step 2. Extracting molecule-specific fragments\\
-Step 3. Extracting strongly connected components of fragments\\
+Step 0. Preparation procedure
+
+Step 1. Extracting haplotype information
+
+Step 2. Extracting molecule-specific fragments
+
+Step 3. Extracting strongly connected components of fragments
+
 Step 4. Haplotyping
 
 
