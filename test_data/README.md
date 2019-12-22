@@ -3,16 +3,15 @@
 ## A simple instruction for testing fast mode.
 
 
-You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package. You may find a SDhaP binary for Ubuntu in the utilities folder (under construction).  
+You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package.   
 
 
 
 ```
 
-cd data
 
-k=3
-mean_10x_molecule_length=50   
+k=3	# ploidy level
+m=50    # mean_10x_molecule_length
 
 
 ../extract_poly/build/extractHAIRS --10X 1 --mbq 4  --mmq 4  --bam possorted_bam.bam --VCF var_het.vcf --out unlinked_fragment_file
@@ -21,7 +20,7 @@ grep -v "NULL" unlinked_fragment_file > unlinked_fragment_file_filtered
 
 python3 ../utilities/LinkFragments_brcd_based.py unlinked_fragment_file_filtered frag.txt
 
-python3 ../utilities/splitter.py frag.txt var_het.vcf $mean_10x_molecule_length
+python3 ../utilities/splitter.py frag.txt var_het.vcf $m
 
 python3 ../utilities/extract_scc.py frag_sp.txt scc ./frag_scc
 

@@ -98,7 +98,7 @@ in which `m` is the mean 10X molecule length (in Kb) which can be set as 50.
 ```
 python3 utilities/extract_scc.py frag_sp.txt scc ./out
 ```
-If you want to have larger haplotype block, you can use `cc` instead of `scc`.
+If you want to have larger haplotype block but with a bit lower quality, you can use `cc` instead of `scc`.
 
 
 
@@ -112,7 +112,7 @@ The core of accurate mode, Hap10, is MATLAB code.
 
 #### Fast mode (Hap++):
 
-You need to install [SDhaP](https://sourceforge.net/projects/sdhap/). To do so, I provide a complete [instruction](https://github.com/smajidian/sdhapc).
+You need to install [SDhaP](https://sourceforge.net/projects/sdhap/). To do so, I provide a through instruction [here](https://github.com/smajidian/sdhapc).
 
 ```
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
@@ -136,6 +136,6 @@ You may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accu
 
 
 
-## Cite us:
+### Cite us:
 
 Hap10: reconstructing accurate and long polyploid haplotypes using linked reads. [draft]
