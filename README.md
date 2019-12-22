@@ -25,18 +25,16 @@ Step 4. Haplotyping
 
 ## Step 0. Preparation procedure
 
-Consider that you have a reference genome ('ref/ref.fa') and two FASTQ files (reads/R1.fastq.gz and reads/R2.fastq.gz corresponding to Illumina paired-end read). As mentioned in the paper you need to align them to the reference genome using [Longrander]((https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation)). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
+Consider that you have a reference genome (`ref/ref.fa`) and two FASTQ files (`reads/R1.fastq.gz` and `reads/R2.fastq.gz` corresponding to Illumina paired-end read). As mentioned in the paper you need to align them to the reference genome using [Longrander]((https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation)). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
 
 ```
-k=3  # ploidy level
-
 longranger mkref ref/ref.fasta
-
-longranger align --id=out_longranger/ --fastqs=reads/ --reference=refdata-ref/
-
-freebayes -f ref/ref.fasta -p $k out_longranger/outs/possorted_bam.bam  > var.vcf
+mkdir longranger_output
+longranger align --id=longranger_output/ --fastqs=reads/ --reference=refdata-ref/
+freebayes -f ref/ref.fasta -p $k longranger_output/outs/possorted_bam.bam  > var.vcf
 ```
 
+in which k is the ploidy level.
 
 ## Step 1. Extracting haplotype information
 
