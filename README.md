@@ -6,6 +6,19 @@ Hap10
 
 The goal is to reconstruct accurate and long haplotype from polyploid genome using linked reads (10x genomics reads).
 
+
+# Workflow of Hap10
+
+Step 0. Preparation procedure
+Step 1. Extracting haplotype information
+Step 2. Extracting molecule-specific fragments
+Step 3. Extracting strongly connected components of fragments
+Step 4. Haplotyping
+
+
+
+# Usage
+
 ## Step 0. Preparation procedure
 
 Consider that you have a reference genome (ref/ref.fa) and two fastq files (reads/R1.fastq.gz and reads/R2.fastq.gz corresponding to Illumina paired-end read). As mentioned in the paper you need to align them to the reference genome using [Longrander]((https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation)). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
