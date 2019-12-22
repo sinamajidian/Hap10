@@ -3,11 +3,10 @@ Hap10
 
 
 
+The goal is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
-The goal is to reconstruct accurate and long haplotype from polyploid genome using linked reads (10x genomics reads).
 
-
-# Workflow of Hap10
+## Workflow of Hap10
 
 Step 0. Preparation procedure
 
@@ -21,7 +20,7 @@ Step 4. Haplotyping
 
 
 
-# Usage
+## Usage
 
 First you need to clone the Hap10 package.
 
@@ -31,7 +30,7 @@ cd Hap10
 ```
 
 
-## Step 0. Preparation procedure
+### Step 0. Preparation procedure
 
 Consider that you have a reference genome, `ref/ref.fa`, and two FASTQ files, `reads/R1.fastq.gz` and `reads/R2.fastq.gz`, corresponding to the Illumina paired-end reads. As mentioned in the paper, you first need to align them to the reference genome using [Longranger](https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
 
@@ -46,7 +45,7 @@ freebayes -f ref/ref.fasta -p $k longranger_output/outs/possorted_bam.bam  > var
 in which `k` is the ploidy level. The outputs of this step are aligned reads and called SNVs as BAM and VCF files, respectively.
 
 
-## Step 1. Extracting haplotype information
+### Step 1. Extracting haplotype information
 
 Here, a fragment file (as a text file) is generated using BAM and filtered VCF file. Firstly, you need to build extract_poly, an edited version (under test) of [extracthairs](https://github.com/vibansal/HapCUT2) in which polyploid genomes are also allowed. The makefile will attempt to build samtools and htslib as git submodules. The output of this step is a binary file `extractHAIRS` in folder `build`.
 
@@ -83,7 +82,7 @@ python3 utilities/LinkFragments_brcd_based.py  unlinked_fragment_file_filtered f
 
 
 
-## Step 2.  Extracting molecule-specific fragments
+### Step 2.  Extracting molecule-specific fragments
 
 The goal of this this step is to extracting molecule-specific fragments from barcode-specific fragment file.
 
@@ -93,7 +92,7 @@ python3 utilities/splitter.py frag.txt $m frag_sp.txt
 in which `m` is the mean 10X molecule length (in Kb) which can be set as 50.
 
 
-## Step 3.  Extracting strongly connected components of fragments
+### Step 3.  Extracting strongly connected components of fragments
 
 
 ```
@@ -104,14 +103,14 @@ If you want to have larger haplotype block, you can use `cc` instead of `scc`.
 
 
 
-## Step 4.  haplotyping (Haplotype assembly core)
+### Step 4.  haplotyping (Haplotype assembly core)
 
 ُThe output of the previous step is several fragment files. The haplotype assembly core should be run on each of them.
 For haplotyping, the user can use one of the two modes: fast or accurate. The core of fast mode, Hap++, is SDhaP which is written in C.
 The core of accurate mode, Hap10, is MATLAB code.
 
 
-### Fast mode (Hap++):
+#### Fast mode (Hap++):
 
 You need to install [SDhaP](https://sourceforge.net/projects/sdhap/). To do so, I provide a complete [instruction](https://github.com/smajidian/sdhapc).
 
@@ -124,7 +123,7 @@ python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position
 
 
 
-### Accurate mode (Hap10):
+#### Accurate mode (Hap10):
 
 You may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
 
