@@ -25,7 +25,7 @@ Step 4. Haplotyping
 
 ## Step 0. Preparation procedure
 
-Consider that you have a reference genome (`ref/ref.fa`) and two FASTQ files (`reads/R1.fastq.gz` and `reads/R2.fastq.gz` corresponding to Illumina paired-end read). As mentioned in the paper you need to align them to the reference genome using [Longrander]((https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation)). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
+Consider that you have a reference genome, `ref/ref.fa`, and two FASTQ files, `reads/R1.fastq.gz` and `reads/R2.fastq.gz`, corresponding to the Illumina paired-end reads. As mentioned in the paper, you first need to align them to the reference genome using [Longranger](https://support.10xgenomics.com/genome-exome/software/pipelines/latest/installation). Then, variants can be called using [freebayes](https://github.com/ekg/freebayes).
 
 ```
 longranger mkref ref/ref.fasta
