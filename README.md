@@ -106,13 +106,14 @@ If you want to have larger haplotype block, you can use `cc` instead of `scc`.
 
 ## Step 4.  haplotyping (Haplotype assembly core)
 
+ُThe output of the previous step is several fragment files. The haplotype assembly core should be run on each of them.
 For haplotyping, the user can use one of the two modes: fast or accurate. The core of fast mode, Hap++, is SDhaP which is written in C.
 The core of accurate mode, Hap10, is MATLAB code.
 
 
 ### Fast mode (Hap++):
 
-You need to install [SDhaP](https://sourceforge.net/projects/sdhap/) using this [instruction](https://github.com/smajidian/sdhapc).
+You need to install [SDhaP](https://sourceforge.net/projects/sdhap/). To do so, I provide a complete [instruction](https://github.com/smajidian/sdhapc).
 
 ```
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
@@ -121,11 +122,6 @@ python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position
 ```
 
 
-
-Because, we know that all variants are hetrozygous, we may remove homo variants in estimated haplotype.
-```
-cat out_with_genomic_position.hap | grep -v "0\t0\t0" |grep -v "1\t1\t1" > out_filtered.hap
-```
 
 
 ### Accurate mode (Hap10):
