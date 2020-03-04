@@ -134,8 +134,6 @@ You may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accu
 
 
 
-
-
 ### Cite us:
 
 Sina Majidian, Mohammad Hossein Kahaei,  Dick de Ridder,  "Hap10: reconstructing accurate and long polyploid haplotypes using linked reads." 
