@@ -23,18 +23,18 @@ As the first step, we generate the fragment file using BAM and VCF files.
 python3 utilities/LinkFragments_brcd_based.py  unlinked_fragments frag.txt
 ```
 
-Then, we extract the molecule-specific fragments.
+Then, we extract the molecule-specific fragments in which `m` is the mean 10X molecule length (in Kb) which can be set as 50.
 
 ```
 python3 utilities/splitter.py frag.txt $m frag_sp.txt
 ```
-in which `m` is the mean 10X molecule length (in Kb) which can be set as 50.
 
 Now, extracting strongly connected components of fragments using the following.
 
 ```
 python3 utilities/extract_scc.py frag_sp.txt scc ./out
 ```
+
 We are ready to use the assembly core:
 
 ```
