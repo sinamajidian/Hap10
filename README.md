@@ -5,6 +5,7 @@ The goal of Hap10 is to reconstruct accurate and long haplotypes polyploid genom
 
 Here we suppose that you have aligne reads (as a BAM file) and called variant (as a VCF file). Please install [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page).
 
+We provide a bash script summarizing the steps for test case in test_data folder.
 
 ## Usage
 
