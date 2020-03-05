@@ -9,6 +9,7 @@ We provide a bash script summarising the steps for test case in [test_data folde
 
 ## Usage
 
+
 Firstly, you need to clone the Hap10 package.
 
 ```

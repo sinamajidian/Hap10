@@ -8,6 +8,7 @@ bam=$1
 vcf=$2
 
 
+
 ../extract_poly/build/extractHAIRS --10X 1 --mbq 4  --mmq 4  --bam $bam --VCF $vcf --out unlinked_fragment_file
 
 grep -v "NULL" unlinked_fragment_file > unlinked_fragment_file_filtered 

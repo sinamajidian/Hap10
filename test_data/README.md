@@ -6,7 +6,6 @@
 You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package.   
 
 
-
 ```
 chmod 755 run.sh
 ./run.sh possorted_bam.bam var_het.vcf
