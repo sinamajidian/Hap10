@@ -3,9 +3,9 @@ Hap10
 
 The goal of Hap10 is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
-Here we suppose that you have aligne reads (as a BAM file) and called variant (as a VCF file). Please install [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page).
+Here we suppose that you have aligned reads (as a BAM file) and called variant (as a VCF file). Please install [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page).
 
-We provide a bash script summarizing the steps for test case in test_data folder.
+We provide a bash script summarising the steps for test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
 
 ## Usage
 
@@ -40,7 +40,7 @@ We are ready to use the assembly core:
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
 ./sdhap/hap_poly frag_sd.txt  out.hap 3
 python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position.hap -v var_het.vcf  
-python2 hap2vcf.py input.hap input.vcf
+
 ```
 
 The above mentioned is the pipeline for Hap++. For accurate mode (Hap10), you may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
