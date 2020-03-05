@@ -5,6 +5,7 @@ Hap10
 
 The goal is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
+For a complete description see the Wiki page.
 
 ## Workflow of Hap10
 
