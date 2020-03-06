@@ -8,8 +8,8 @@ Here we suppose that you have aligned reads (as a BAM file) and called variant (
 We provide a bash script summarising the steps for test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
 
 Our preprint:
-Sina Majidian, Mohammad Hossein Kahaei, and Dick de Ridder,  
-"Hap10: reconstructing accurate and long polyploid haplotypes using linked reads." https://www.biorxiv.org/content/10.1101/2020.01.08.899013v1 
+
+Sina Majidian, Mohammad Hossein Kahaei, and Dick de Ridder. ["Hap10: reconstructing accurate and long polyploid haplotypes using linked reads."](https://www.biorxiv.org/content/10.1101/2020.01.08.899013v1)
 
 
 ## Usage
