@@ -7,6 +7,10 @@ Here we suppose that you have aligned reads (as a BAM file) and called variant (
 
 We provide a bash script summarising the steps for test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
 
+```
+Sina Majidian, Mohammad Hossein Kahaei,  Dick de Ridder,  "Hap10: reconstructing accurate and long polyploid haplotypes using linked reads."  https://www.biorxiv.org/content/10.1101/2020.01.08.899013v1 
+```
+
 ## Usage
 
 
@@ -41,18 +45,10 @@ We are ready to use the assembly core:
 python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
 ./sdhap/hap_poly frag_sd.txt  out.hap 3
 python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position.hap -v var_het.vcf  
-
+python utilities/hap2vcf.py haplotype_with_genomic_position.hap $vcf
 ```
 
 The above mentioned is the pipeline for Hap++. For accurate mode (Hap10), you may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
-
-
-
-## Cite us:
-
-Sina Majidian, Mohammad Hossein Kahaei,  Dick de Ridder,  "Hap10: reconstructing accurate and long polyploid haplotypes using linked reads." 
-https://www.biorxiv.org/content/10.1101/2020.01.08.899013v1
-
 
 
 
