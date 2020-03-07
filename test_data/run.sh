@@ -13,11 +13,21 @@ vcf=$2
 
 grep -v "NULL" unlinked_fragment_file > unlinked_fragment_file_filtered 
 
+
+echo "Raw fragment file is generated."
+
 python3 ../utilities/LinkFragments_brcd_based.py unlinked_fragment_file_filtered frag.txt
+
+echo "Molecule-specific fragment file is generated."
 
 python3 ../utilities/splitter.py frag.txt  $vcf $m
 
+
+echo "Barcode-specific fragment file is generated."
+
 python3 ../utilities/extract_scc.py frag_sp.txt scc ./frag_scc
+
+echo "Several fragment files including strongly connected components are generated."
 
 
 for i in {0..2}; do
