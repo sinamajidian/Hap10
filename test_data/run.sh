@@ -34,9 +34,9 @@ ls | grep "frag_scc" | head -n -1 > list_frags_scc.txt
 
 while read frag_i; do 
 
-	python2 ../utilities/FragmentPoly.py -f frag_scc0_${i}.txt  -o frag_scc0_${i}_sd.txt -x SDhaP  
-	hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
-	cat scc0_${i}.hap >> haplotype.hap
+	python2 ../utilities/FragmentPoly.py -f ${frag_i}.txt  -o ${frag_i}_sd.txt -x SDhaP  
+	hap_poly ${frag_i}_sd.txt ${frag_i}.hap $k
+	cat ${frag_i}.hap >> haplotype.hap
 	
 done < list_frags_scc.txt
 
