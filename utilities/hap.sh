@@ -14,7 +14,7 @@ python3 utilities/LinkFragments_brcd_based.py  unlinked_fragments frag.txt
 
 python3 utilities/splitter.py frag.txt $m frag_sp.txt
 
-python3 utilities/extract_scc.py frag_sp.txt scc ./out
+python3 utilities/extract_scc.py frag_sp.txt scc ./frag_scc
 
 ls | grep "frag_scc" | head -n -1 > list_frags_scc.txt
 
