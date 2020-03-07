@@ -9,7 +9,7 @@ vcf=$2
 
 
 
-../extract_poly/build/extractHAIRS --10X 1 --mbq 4  --mmq 4  --bam $bam --VCF $vcf --out unlinked_fragment_file
+extractHAIRS --10X 1 --mbq 4  --mmq 4  --bam $bam --VCF $vcf --out unlinked_fragment_file
 
 grep -v "NULL" unlinked_fragment_file > unlinked_fragment_file_filtered 
 
@@ -33,7 +33,7 @@ echo "Several fragment files including strongly connected components are generat
 for i in {0..2}; do
 
 	python2 ../utilities/FragmentPoly.py -f frag_scc0_${i}.txt  -o frag_scc0_${i}_sd.txt -x SDhaP  
-	../utilities/hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
+	hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
 	cat scc0_${i}.hap >> haplotype.hap
 	
 done
