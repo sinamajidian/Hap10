@@ -16,10 +16,21 @@ python3 utilities/splitter.py frag.txt $m frag_sp.txt
 
 python3 utilities/extract_scc.py frag_sp.txt scc ./out
 
+ls | grep "frag_scc" | head -n -1 > list_frags_scc.txt
 
 
-python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
-./sdhap/hap_poly frag_sd.txt  out.hap 3
-python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position.hap -v var_het.vcf  
+
+while read frag_i; do 
+
+	python2 utilities/FragmentPoly.py -f ${frag_i}  -o ${frag_i}_sd.txt -x SDhaP
+	hap_poly ${frag_i}_sd.txt  ${frag_i}.hap $k
+
+	cat ${frag_i}.hap >> haplotype.hap
+	
+done < list_frags_scc.txt
+
+
+
+python2 utilities/ConvertAllelesSDhaP.py -p haplotype.hap -o haplotype_with_genomic_position.hap -v $vcf  
 python utilities/hap2vcf.py haplotype_with_genomic_position.hap $vcf
 
