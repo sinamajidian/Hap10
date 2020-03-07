@@ -3,7 +3,7 @@ Hap10
 
 The goal of Hap10 is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
-Here, we suppose that you have aligned reads (as a BAM file) and called variant (as a VCF file). Please install [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page). We provide a bash script summarising the steps for test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
+Here, we suppose that you prepared the aligned reads (as a BAM file) and the called variants (as a VCF file). Additionally, you have installed [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page). We provide a bash script summarising the steps for a test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
 
 
 Sina Majidian, Mohammad Hossein Kahaei, and Dick de Ridder. ["Hap10: reconstructing accurate and long polyploid haplotypes using linked reads."](https://www.biorxiv.org/content/10.1101/2020.01.08.899013v1)
@@ -18,6 +18,11 @@ Firstly, you need to clone the Hap10 package.
 git clone https://github.com/smajidian/Hap10.git
 cd Hap10
 ```
+
+You can run the following steps using a single bash script `utilities/hap.sh`.
+
+
+
 
 As the first step, we generate the fragment file using BAM and VCF files.
 ```
@@ -45,8 +50,10 @@ python2 utilities/FragmentPoly.py -f frag_sp.txt  -o frag_sd.txt -x SDhaP
 python2 utilities/ConvertAllelesSDhaP.py -p out.hap -o out_with_genomic_position.hap -v var_het.vcf  
 python utilities/hap2vcf.py haplotype_with_genomic_position.hap $vcf
 ```
+The output of the provided bash scripts is a VCF file in which the haplotypes are provided in GT field.
 
 The above mentioned is the pipeline for Hap++. For accurate mode (Hap10), you may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
+
 
 
 
