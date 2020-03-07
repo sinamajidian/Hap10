@@ -30,13 +30,15 @@ python3 ../utilities/extract_scc.py frag_sp.txt scc ./frag_scc
 echo "Several fragment files including strongly connected components are generated."
 
 
-for i in {0..2}; do
+ls | grep "frag_scc" | head -n -1 > list_frags_scc.txt
+
+while read frag_i; do 
 
 	python2 ../utilities/FragmentPoly.py -f frag_scc0_${i}.txt  -o frag_scc0_${i}_sd.txt -x SDhaP  
 	hap_poly frag_scc0_${i}_sd.txt scc0_${i}.hap $k
 	cat scc0_${i}.hap >> haplotype.hap
 	
-done
+done < list_frags_scc.txt
 
 python2 ../utilities/ConvertAllelesSDhaP.py -p haplotype.hap -o haplotype_with_genomic_position.hap -v  $vcf  
 
