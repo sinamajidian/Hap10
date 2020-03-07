@@ -3,7 +3,9 @@
 ## A simple instruction for testing fast mode.
 
 
-You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package.   
+You can test the pipeline using the provided data (BAM and VCF files) in this folder.  we supposed that you've built the extract_poly and SDhaP package. Please add them to your bash profile as well.
+
+
 
 
 ```
