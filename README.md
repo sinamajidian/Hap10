@@ -2,7 +2,7 @@ Hap10
 ======
 
 
-[We are providing ful support for this package. Feel free to ask your questions through email or Github's issue](https://github.com/smajidian/Hap10/issues).
+[We are providing ful support for this package. Feel free to ask your questions through email (sina.majidian@gmail.com) or Github's issue](https://github.com/smajidian/Hap10/issues).
 
 
 
