@@ -45,7 +45,7 @@ in which k is the ploidy level.
 We provide  a test fragment file and the expected output file in the folder `data_test`. Run this on linux
 
 ```
-./run_hap10.sh /mnt/scratch/majid001/installed/matlab_runtime/v96 data_test/fragment.txt  3
+./run_hap10.sh <MR_directory>/v96 data_test/fragment.txt  3
 
 ```
 
