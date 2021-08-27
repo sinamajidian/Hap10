@@ -157,9 +157,9 @@ def link_fragments(flist):
                     for i in range(len(new_fseq)):
                         if new_fseq[i][0] == snp_ix:
 
-                            if new_fseq[i][2] == allele_call:
+                            if new_fseq[i][1] == allele_call:
                                 q1 = ord(qual) - 33
-                                q2 = ord(new_fseq[i][3]) - 33
+                                q2 = ord(new_fseq[i][2]) - 33
 
                                 Q = q1 + q2 # combined quality score
                                 if Q > 93:
@@ -167,7 +167,7 @@ def link_fragments(flist):
 
                                 Q_char = chr(33 + Q)
 
-                                new_fseq[i] = (new_fseq[i][0], new_fseq[i][1], new_fseq[i][2], Q_char)
+                                new_fseq[i] = (new_fseq[i][0], new_fseq[i][1], Q_char) 
                                 #print(new_fseq)
 
                             else:
