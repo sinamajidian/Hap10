@@ -16,16 +16,16 @@ grep -v "NULL" unlinked_fragment_file > unlinked_fragment_file_filtered
 
 echo "Raw fragment file is generated."
 
-python3 ../utilities/LinkFragments_brcd_based.py unlinked_fragment_file_filtered frag.txt
+python3 ../utilities/LinkFragments_brcd_based.py unlinked_fragment_file_filtered frag_linked.txt
 
 echo "Molecule-specific fragment file is generated."
 
-python3 ../utilities/splitter.py frag.txt  $vcf $m
+python3 ../utilities/splitter.py frag_linked.txt  $vcf $m
 
 
 echo "Barcode-specific fragment file is generated."
 
-python3 ../utilities/extract_scc.py frag_sp.txt scc ./frag_scc
+python3 ../utilities/extract_scc.py frag_linked_sp.txt scc ./frag_scc
 
 echo "Several fragment files including strongly connected components are generated."
 
