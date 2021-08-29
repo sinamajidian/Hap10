@@ -28,7 +28,8 @@ cd Hap10
 You can run the following steps using a single bash script `utilities/hap.sh`.
 
 
-
+* important* 
+Please run the pipeline for each chromosome separately.
 
 As the first step, we generate the fragment file using BAM and VCF files.
 ```
