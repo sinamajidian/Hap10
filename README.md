@@ -40,7 +40,7 @@ python3 utilities/LinkFragments_brcd_based.py  unlinked_fragments frag.txt
 Then, we extract the molecule-specific fragments in which `m` is the mean 10X molecule length (in Kb) which can be set as 50.
 
 ```
-python3 utilities/splitter.py frag.txt $m frag_sp.txt
+python3 utilities/splitter.py frag.txt var_het.vcf $m 
 ```
 
 Now, extracting strongly connected components of fragments using the following.
