@@ -6,10 +6,9 @@ Hap10
 
 
 
-
 The goal of Hap10 is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
-Here, we suppose that you prepared the aligned reads (as a BAM file) and the called variants (as a VCF file). Additionally, you have installed [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page). We provide a bash script summarising the steps for a test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
+Here, we suppose that you prepared the aligned reads (as BAM files per chrs) and the called variants (as a VCF file). Additionally, you have installed [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page). We provide a bash script summarising the steps for a test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
 
 
 Sina Majidian, Mohammad Hossein Kahaei, and Dick de Ridder. ["Hap10: reconstructing accurate and long polyploid haplotypes using linked reads."](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-020-03584-5)
