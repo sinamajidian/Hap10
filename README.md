@@ -2,10 +2,6 @@ Hap10
 ======
 
 
-[We are providing ful support for this package. Feel free to ask your questions through the Github's issue](https://github.com/smajidian/Hap10/issues).
-
-
-
 The goal of Hap10 is to reconstruct accurate and long haplotypes polyploid genome using linked reads.
 
 Here, we suppose that you prepared the aligned reads (as BAM files per chrs) and the called variants (as a VCF file). Additionally, you have installed [extract_poly](https://github.com/smajidian/extract_poly) and [SDhaP](https://github.com/smajidian/sdhapc) beforehand. For a complete description see the [Wiki page](https://github.com/smajidian/Hap10/wiki/Hap10-Wiki-page). We provide a bash script summarising the steps for a test case in [test_data folder](https://github.com/smajidian/Hap10/tree/master/test_data).
