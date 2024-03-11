@@ -63,6 +63,7 @@ def writ_vcf_gen(vcf_file_address,out_unphased):
     vcf_file.write('##fileformat=VCFv4.2\n##source=Haplogenerator\n')
     vcf_file.write('##INFO=<ID=NS,Number=1,Type=Integer,Description="test">\n')
     vcf_file.write('##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">\n')
+    vcf_file.write('##FORMAT=<ID=PS,Number=1,Type=Integer,Description="haplotype block ID which is the genomic position of first variant.">\n')
     vcf_file.write('#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tSAMPLE\n')
 
 
@@ -156,7 +157,7 @@ def convert_vcf(var_lines, var_pos, phasings):
             phase_value=phasing[0]+':'+str(phasing[1])
 
             var_line_split=var_line.split("\t")
-            var_line_new_list=var_line_split[:8]+["GT|PS"]+[phase_value]
+            var_line_new_list=var_line_split[:8]+["GT:PS"]+[phase_value]
             var_line_new="\t".join(var_line_new_list)
         else:
 
@@ -171,8 +172,14 @@ def convert_vcf(var_lines, var_pos, phasings):
 def writ_vcf_sdhap(vcf_file_out,header_lines,var_lines_phasing):
 
     vcf_file = open(vcf_file_out,'w');
-    for header_line in header_lines:
-        vcf_file.write(header_line+"\n")
+    for header_line in header_lines[:-1]:
+        if "=GT," not in header_line:
+            vcf_file.write(header_line+"\n")
+            
+    vcf_file.write('##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">\n')
+    vcf_file.write('##FORMAT=<ID=PS,Number=1,Type=Integer,Description="haplotype block ID which is the genomic position of first variant.">\n')
+    vcf_file.write(header_lines[-1]+"\n")
+    
     for var_line_phasing in var_lines_phasing:
         vcf_file.write(var_line_phasing+"\n")
     vcf_file.close()
