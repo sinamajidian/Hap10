@@ -24,7 +24,10 @@ You can run the following steps using a single bash script `utilities/hap.sh`.
 
 
 * important* 
-Please run the pipeline for each chromosome separately.
+- Please run the pipeline for each chromosome separately.
+- The input vcf file ` var_het.vcf` should contain only the heterozygous variants like `0/1` or `1/0` not `0|0` or `1|1`.  
+
+
 
 As the first step, we generate the fragment file using BAM and VCF files.
 ```
