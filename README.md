@@ -57,10 +57,11 @@ python utilities/hap2vcf.py haplotype_with_genomic_position.hap $vcf
 ```
 The output of the provided bash scripts is a VCF file in which the haplotypes are provided in GT field.
 
-The above mentioned is the pipeline for Hap++. For accurate mode (Hap10), you may refer to this [page](https://github.com/smajidian/Hap10/tree/master/accurate_mode).
+* Note
 
+The above description is called the Hap++ pipeline as part of the Hap10 publication. 
 
-
+We also developed a haplotype assembly core called "accurate mode (Hap10)" written in Matlab which is not maintained anymore.
 
 
 ## Copyright
